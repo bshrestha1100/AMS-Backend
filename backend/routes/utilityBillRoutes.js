@@ -211,23 +211,23 @@ router.post('/admin/create-and-send', protect, authorize('admin'), async (req, r
             .populate('tenantId', 'name email')
             .populate('apartmentId', 'unitNumber building');
 
-        // Send email to tenant
-        try {
-            await emailService.sendUtilityBillEmail({
-                name: populatedBill.tenantId.name,
-                email: populatedBill.tenantId.email,
-                billType: 'Utility Bill',
-                amount: populatedBill.totalAmount,
-                dueDate: populatedBill.dueDate,
-                billMonth: new Date(populatedBill.billingPeriod.startDate).toLocaleDateString('en-US', {
-                    month: 'long',
-                    year: 'numeric'
-                })
-            });
-            console.log(`Bill ${bill.billNumber} sent to ${populatedBill.tenantId.email}`);
-        } catch (emailError) {
-            console.error('Email sending failed:', emailError);
-        }
+        // // Send email to tenant
+        // try {
+        //     await emailService.sendUtilityBillEmail({
+        //         name: populatedBill.tenantId.name,
+        //         email: populatedBill.tenantId.email,
+        //         billType: 'Utility Bill',
+        //         amount: populatedBill.totalAmount,
+        //         dueDate: populatedBill.dueDate,
+        //         billMonth: new Date(populatedBill.billingPeriod.startDate).toLocaleDateString('en-US', {
+        //             month: 'long',
+        //             year: 'numeric'
+        //         })
+        //     });
+        //     console.log(`Bill ${bill.billNumber} sent to ${populatedBill.tenantId.email}`);
+        // } catch (emailError) {
+        //     console.error('Email sending failed:', emailError);
+        // }
 
         res.status(201).json({
             success: true,

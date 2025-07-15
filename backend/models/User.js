@@ -220,7 +220,7 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 // Add query middleware to exclude deleted users by default
-userSchema.pre(/^find/, function(next) {
+userSchema.pre(/^find/, function (next) {
     // Only exclude deleted users if not explicitly querying for them
     if (!this.getQuery().isDeleted) {
         this.find({ isDeleted: { $ne: true } });

@@ -35,10 +35,8 @@ const utilityBillSchema = new mongoose.Schema({
                 'gas',
                 'internet',
                 'maintenance',
-                'floor_heating',      // Add this
-                'car_charging',       // Add this
-                'water_jar',          // Add this
-                'cleaning_service'    // Add this
+                'floor_heating', 
+                'car_charging'
             ],
             required: true
         },

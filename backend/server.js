@@ -22,8 +22,8 @@ const workerRoutes = require('./routes/workerRoutes');
 const beverageConsumptionRoutes = require('./routes/beverageConsumptionRoutes');
 const utilityBillRoutes = require('./routes/utilityBillRoutes');
 const LeaseExpiryJob = require('./jobs/leaseExpiryJob');
-const emailService = require('./services/emailService');
-emailService.testConnection();
+// const emailService = require('./services/emailService');
+// emailService.testConnection();
 
 // Import services
 const MonthlyBillingService = require('./jobs/monthlyBilling');
@@ -273,12 +273,12 @@ const server = app.listen(PORT, HOST, () => {
     console.log(`   URL: http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PORT}`);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
     
-    // Start lease expiry notification job
-    LeaseExpiryJob.start();
-});
+//     // Start lease expiry notification job
+//     LeaseExpiryJob.start();
+// });
 
 // Graceful shutdown
 const gracefulShutdown = async (signal) => {
